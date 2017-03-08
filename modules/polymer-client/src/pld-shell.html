@@ -1,17 +1,9 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/cuba-app/cuba-app.html">
-<link rel="import" href="../bower_components/cuba-app/cuba-app-aware-behavior.html">
 <link rel="import" href="../bower_components/cuba-data/cuba-data.html">
-<link rel="import" href="../bower_components/cuba-form/cuba-form.html">
-
 
 <dom-module id="pld-shell">
   <template>
-    <style>
-      :host {
-        display: block;
-      }
-    </style>
 
     <cuba-app api-url="/app/rest/"></cuba-app>
 
@@ -27,8 +19,7 @@
   </template>
   <script>
     Polymer({
-      is: 'pld-shell',
-      behaviors: [CubaAppAwareBehavior]
+      is: 'pld-shell'
     });
   </script>
 </dom-module>
