@@ -6,6 +6,10 @@
       :host {
         display: block;
       }
+      .markdown-html pre {
+        border-left: 5px solid #ccc;
+        padding-left: 12px;
+      }
     </style>
 
     <iron-ajax auto
@@ -17,8 +21,9 @@
     <marked-element markdown="[[description]]">
       <div class="markdown-html"></div>
     </marked-element>
-    <h3>Demo</h3>
-    <slot name="demo"></slot>
+
+    <h3 hidden$="[[!_showDemo]]">Demo</h3>
+    <slot id="demo" name="demo"></slot>
 
   </template>
   <script>
@@ -26,15 +31,22 @@
       is: 'pld-sample',
       properties: {
         heading: String,
-        component: String,
+        description: String,
+        descriptionPath: String,
         descriptionUrl: {
           type: String,
-          computed: '_computeDescriptionUrl(component)'
+          computed: '_computeDescriptionUrl(descriptionPath)'
+        },
+        _showDemo: {
+          type: Boolean,
+          value: false
         }
       },
-      _computeDescriptionUrl: function(component) {
-        console.log(this.baseUrl);
-        return 'src/' + component + '.md';
+      ready: function() {
+        this._showDemo = Polymer.dom(this.$.demo).getDistributedNodes().length > 0;
+      },
+      _computeDescriptionUrl: function(descriptionPath) {
+        return 'src/' + descriptionPath + '.md';
       }
     });
   </script>
