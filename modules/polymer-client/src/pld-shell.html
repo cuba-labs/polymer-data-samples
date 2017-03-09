@@ -1,20 +1,24 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/cuba-app/cuba-app.html">
-<link rel="import" href="../bower_components/cuba-data/cuba-data.html">
+<link rel="import" href="../bower_components/marked-element/marked-element.html">
+
+<link rel="import" href="components/pld-sample.html">
+<link rel="import" href="pld-entities.html">
 
 <dom-module id="pld-shell">
   <template>
+    <style>
+      pld-sample {
+        margin: 20px auto;
+        max-width: 800px;
+      }
+    </style>
 
     <cuba-app api-url="/app/rest/"></cuba-app>
 
-    <cuba-entities entity-name="sec$User"
-                   view="_local"
-                   data="{{users}}">
-    </cuba-entities>
-
-    <template is="dom-repeat" items="[[users]]" as="user">
-      <div>[[user.name]]</div>
-    </template>
+    <pld-sample heading="Simple entities" component="pld-entities">
+      <pld-entities slot="demo"></pld-entities>
+    </pld-sample>
 
   </template>
   <script>

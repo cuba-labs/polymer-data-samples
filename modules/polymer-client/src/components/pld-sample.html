@@ -1,0 +1,41 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<dom-module id="pld-sample">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+
+    <iron-ajax auto
+               url="[[descriptionUrl]]"
+               handle-as="text"
+               last-response="{{description}}"></iron-ajax>
+
+    <h2>[[heading]]</h2>
+    <marked-element markdown="[[description]]">
+      <div class="markdown-html"></div>
+    </marked-element>
+    <h3>Demo</h3>
+    <slot name="demo"></slot>
+
+  </template>
+  <script>
+    Polymer({
+      is: 'pld-sample',
+      properties: {
+        heading: String,
+        component: String,
+        descriptionUrl: {
+          type: String,
+          computed: '_computeDescriptionUrl(component)'
+        }
+      },
+      _computeDescriptionUrl: function(component) {
+        console.log(this.baseUrl);
+        return 'src/' + component + '.md';
+      }
+    });
+  </script>
+</dom-module>

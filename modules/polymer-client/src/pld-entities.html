@@ -1,0 +1,28 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/cuba-app/cuba-app.html">
+<link rel="import" href="../bower_components/cuba-data/cuba-data.html">
+
+<dom-module id="pld-entities">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+
+    <cuba-entities entity-name="sec$User"
+                   view="_local"
+                   data="{{users}}">
+    </cuba-entities>
+
+    <template is="dom-repeat" items="[[users]]" as="user">
+      <div>[[user.name]]</div>
+    </template>
+
+  </template>
+  <script>
+    Polymer({
+      is: 'pld-entities'
+    });
+  </script>
+</dom-module>
