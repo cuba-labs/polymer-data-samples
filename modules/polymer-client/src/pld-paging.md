@@ -7,7 +7,7 @@
                entity-name="sec$User"
                view="_local"
                sort="createTs"
-               limit="[[limit]]"
+               limit="1"
                offset="[[offset]]"
                provide-count
                count="{{count}}"
@@ -15,12 +15,12 @@
 </cuba-entities>
 
 <template is="dom-repeat" items="[[users]]" as="user">
-  <div>[[user.name]]</div>
+  <div>[[user.login]]</div>
 </template>
 
 <div class="paging">
-  <button hidden$="[[!_prevButtonAvailable(offset)]]" on-tap="_prevPage">←</button>
-  <button hidden$="[[!_nextButtonAvailable(limit, count)]]" on-tap="_nextPage">→</button>
+  <button disabled$="[[!_prevButtonAvailable(offset)]]" on-tap="_prevPage">⯇</button>
+  <button disabled$="[[!_nextButtonAvailable(offset, count)]]" on-tap="_nextPage">⯈</button>
   Count: [[count]]
 </div>
 

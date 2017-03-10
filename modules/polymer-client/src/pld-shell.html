@@ -1,11 +1,13 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/cuba-app/cuba-app.html">
 <link rel="import" href="../bower_components/marked-element/marked-element.html">
-<link rel="import" href="../bower_components/iron-component-page/iron-component-page.html">
+<link rel="import" href="../bower_components/prism-element/prism-highlighter.html">
+<link rel="import" href="../bower_components/prism-element/prism-theme-default.html">
 
 <link rel="import" href="components/pld-sample.html">
 <link rel="import" href="pld-entities.html">
 <link rel="import" href="pld-paging.html">
+<link rel="import" href="pld-entity-create.html">
 
 <dom-module id="pld-shell">
   <template>
@@ -15,6 +17,7 @@
         max-width: 800px;
       }
     </style>
+    <prism-highlighter></prism-highlighter>
 
     <cuba-app api-url="/app/rest/"></cuba-app>
 
@@ -26,6 +29,10 @@
 
     <pld-sample heading="Paging" description-path="pld-paging">
       <pld-paging slot="demo"></pld-paging>
+    </pld-sample>
+
+    <pld-sample heading="Create entity" description-path="pld-entity-create">
+      <pld-entity-create slot="demo"></pld-entity-create>
     </pld-sample>
 
   </template>
