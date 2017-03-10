@@ -1,4 +1,4 @@
-`cuba-entities` and `cuba-query` elements provides the following capabilities for typical paging:
+`cuba-entities` and `cuba-query` elements provide the following capabilities for typical paging:
  * `provide-count` — if set then total amount of entities will be queried and provided via `count` property
  * `limit` and `offset` properties — elements will react on changes and reload entities accordingly
 

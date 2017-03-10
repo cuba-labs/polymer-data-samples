@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<queries xmlns="http://schemas.haulmont.com/cuba/rest-queries.xsd">
+    <query name="usersByName" entity="sec$User" view="_local">
+        <jpql><![CDATA[select u from sec$User u where u.login like concat('%',:login,'%')]]></jpql>
+        <params>
+            <param name="login" type="java.lang.String"/>
+        </params>
+    </query>
+</queries>
