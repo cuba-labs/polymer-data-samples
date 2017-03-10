@@ -1,0 +1,71 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/cuba-app/cuba-app.html">
+<link rel="import" href="../bower_components/cuba-data/cuba-data.html">
+
+<dom-module id="pld-paging">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+      .paging {
+        margin-top: 12px;
+      }
+    </style>
+
+    <cuba-entities id="data"
+                   entity-name="sec$User"
+                   view="_local"
+                   sort="createTs"
+                   limit="[[limit]]"
+                   offset="[[offset]]"
+                   provide-count
+                   count="{{count}}"
+                   data="{{users}}">
+    </cuba-entities>
+
+    <template is="dom-repeat" items="[[users]]" as="user">
+      <div>[[user.name]]</div>
+    </template>
+
+    <div class="paging">
+      <button hidden$="[[!_prevButtonAvailable(offset)]]" on-tap="_prevPage">←</button>
+      <button hidden$="[[!_nextButtonAvailable(limit, count)]]" on-tap="_nextPage">→</button>
+      Count: [[count]]
+    </div>
+
+  </template>
+  <script>
+    Polymer({
+      is: 'pld-paging',
+      properties: {
+        limit: {
+          type: Number,
+          value: 1
+        },
+        offset: {
+          type: Number,
+          value: 0
+        },
+        count: {
+          type: Number,
+          value: 0
+        }
+      },
+      _prevButtonAvailable: function(offset) {
+        return offset > 0;
+      },
+      _nextButtonAvailable: function(limit, count) {
+        return count > limit;
+      },
+      _prevPage: function() {
+        this.offset--;
+        this.limit--;
+      },
+      _nextPage: function() {
+        this.offset++;
+        this.limit++;
+      }
+    });
+  </script>
+</dom-module>

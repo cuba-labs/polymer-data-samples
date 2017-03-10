@@ -10,6 +10,10 @@
         border-left: 5px solid #ccc;
         padding-left: 12px;
       }
+      .demo-wrapper {
+        background: #eeeeee;
+        padding: 24px;
+      }
     </style>
 
     <iron-ajax auto
@@ -23,7 +27,9 @@
     </marked-element>
 
     <h3 hidden$="[[!_showDemo]]">Demo</h3>
-    <slot id="demo" name="demo"></slot>
+    <div hidden$="[[!_showDemo]]" class="demo-wrapper">
+      <slot id="demo" name="demo"></slot>
+    </div>
 
   </template>
   <script>
