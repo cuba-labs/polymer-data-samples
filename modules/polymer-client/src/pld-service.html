@@ -1,0 +1,25 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/cuba-data/cuba-data.html">
+
+<dom-module id="pld-service">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+
+    <cuba-service service-name="cuba_ServerInfoService"
+                  method="getReleaseNumber"
+                  data="{{releaseNumber}}"
+                  handle-as="text"></cuba-service>
+
+    Release number: [[releaseNumber]]
+
+  </template>
+  <script>
+    Polymer({
+      is: 'pld-service'
+    });
+  </script>
+</dom-module>
