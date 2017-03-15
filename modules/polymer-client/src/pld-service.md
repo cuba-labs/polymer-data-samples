@@ -1,4 +1,4 @@
-Expose service method to the REST API using xml configuration
+Expose service method to the REST API using [xml configuration](https://doc.cuba-platform.com/manual-latest/rest_api_v2_services_config.html)
 
 `rest-services.xml`:
 ```xml
@@ -20,7 +20,8 @@ cuba.rest.servicesConfig = demo/pld/rest-services.xml
 ...
 ```
 
-Use `cuba-service` element to invoke service
+Use [cuba-service](https://cuba-elements.github.io/cuba-elements/components/cuba-data/#cuba-service) element 
+to invoke a service method
 ```html
 <cuba-service service-name="cuba_ServerInfoService"
               method="getReleaseNumber"

@@ -19,8 +19,8 @@
 </template>
 
 <div class="paging">
-  <button disabled$="[[!_prevButtonAvailable(offset)]]" on-tap="_prevPage">⯇</button>
-  <button disabled$="[[!_nextButtonAvailable(offset, count)]]" on-tap="_nextPage">⯈</button>
+  <button disabled$="[[!_prevButtonAvailable(offset)]]" on-tap="_prevPage">←</button>
+  <button disabled$="[[!_nextButtonAvailable(offset, count)]]" on-tap="_nextPage">→</button>
   Count: [[count]]
 </div>
 
