@@ -9,7 +9,7 @@
   "extraDependencies": [
     "manifest.json",
     "service-worker.js",
-    "bower_components/webcomponentsjs/webcomponents-loader.js",
+    "bower_components/webcomponentsjs/*.js",
     "bower_components/fetch/fetch.js"
   ]
 }
