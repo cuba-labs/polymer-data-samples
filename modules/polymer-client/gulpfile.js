@@ -7,16 +7,24 @@ const mergeStream = require('merge-stream');
 const path = require('path');
 const polyserve = require('polyserve');
 
-const project = new polymerBuild.PolymerProject(require('./polymer.json'));
+const projectOptions = require('./polymer.json');
+const project = new polymerBuild.PolymerProject(projectOptions);
 
 gulp.task('clean', function() {
   return del(path.join('build','bundled'));
 });
 
-gulp.task('build', ['clean'], function() {
+gulp.task('build:unbundled', ['clean'], function() {
+  const project = new polymerBuild.PolymerProject(projectOptions);
   return mergeStream(project.sources(), project.dependencies())
-    .pipe(project.analyzer)
-    .pipe(project.bundler)
+    .pipe(project.updateBaseTag(projectOptions.basePath))
+    .pipe(gulp.dest(path.join('build','bundled')));
+});
+
+gulp.task('build', ['build:unbundled', 'clean'], function() {
+  return mergeStream(project.sources(), project.dependencies())
+    .pipe(project.bundler())
+    .pipe(project.updateBaseTag(projectOptions.basePath))
     .pipe(gulp.dest(path.join('build','bundled')));
 });
 
@@ -31,5 +39,5 @@ gulp.task('build-sw', ['build'], function(callback) {
 });
 
 gulp.task('serve', function() {
-  polyserve.startServer();
+  polyserve.startServers({});
 });
