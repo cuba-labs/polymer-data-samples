@@ -3,4 +3,10 @@
     <service name="cuba_ServerInfoService">
         <method name="getReleaseNumber"/>
     </service>
+
+    <service name="cuba_EmailService">
+        <method name="sendEmailAsync">
+            <param name="emailInfo"/>
+        </method>
+    </service>
 </services>

@@ -10,6 +10,7 @@
 <link rel="import" href="pld-service.html">
 <link rel="import" href="pld-paging.html">
 <link rel="import" href="pld-entity-create.html">
+<link rel="import" href="pld-service-form.html">
 
 <dom-module id="pld-shell">
   <template>
@@ -21,7 +22,7 @@
     </style>
     <prism-highlighter></prism-highlighter>
 
-    <cuba-app api-url="/app/rest/"></cuba-app>
+    <cuba-app api-url="//localhost:8080/app/rest/"></cuba-app>
 
     <pld-sample heading="Initialize connection" description-path="initialization"></pld-sample>
 
@@ -43,6 +44,10 @@
 
     <pld-sample heading="Entity creation" description-path="pld-entity-create">
       <pld-entity-create></pld-entity-create>
+    </pld-sample>
+
+    <pld-sample heading="Service form" description-path="pld-service-form">
+      <pld-service-form></pld-service-form>
     </pld-sample>
 
   </template>

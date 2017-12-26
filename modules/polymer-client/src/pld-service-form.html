@@ -1,0 +1,86 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/cuba-form/cuba-service-form.html">
+
+<dom-module id="pld-service-form">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <p>Send Email using CUBA EmailService:</p>
+    <cuba-service-form id="serviceForm" service-name="cuba_EmailService" method="sendEmailAsync" params="[[emailParams]]">
+      <input placeholder="E-mail address"
+             type="text"
+             name="email"
+             value="{{emailParams.emailInfo.addresses::input}}">
+      <input placeholder="Caption"
+             type="text"
+             name="caption"
+             value="{{emailParams.emailInfo.caption::input}}">
+      <input placeholder="Body"
+             type="text"
+             name="body"
+             value="{{emailParams.emailInfo.body::input}}">
+
+      <button on-tap="_send">Send Email</button>
+
+      <button on-tap="_reset">Reset form</button>
+    </cuba-service-form>
+
+  </template>
+  <script>
+    "use strict";
+
+    (function() {
+
+      Polymer({
+
+        is: 'pld-service-form',
+
+        properties: {
+          emailParams: {
+            type: Object,
+            value: function() {
+              return createEmailParams();
+            }
+          }
+        },
+
+        _send: function() {
+          if (!this._validate()){
+            return;
+          }
+          this.$.serviceForm.submit().then(function() {
+            alert('The email has been sent')
+          });
+        },
+
+        _reset: function() {
+          this.emailParams = createEmailParams();
+        },
+
+        _validate: function() {
+          if (!this.emailParams.emailInfo.addresses || !this.emailParams.emailInfo.caption || !this.emailParams.emailInfo.body){
+            alert('Please fill out all fields');
+            return false;
+          }
+          return true;
+        }
+
+      });
+
+
+      function createEmailParams() {
+        return {
+          emailInfo: {
+            addresses: null,
+            caption: null,
+            body: null
+          }
+        }
+      }
+
+    })();
+  </script>
+</dom-module>
