@@ -5,8 +5,8 @@
   "dependencies": {
     "fetch": "github/fetch#^2.0.1",
     "polymer": "Polymer/polymer#^2.0.0",
-    "cuba-app": "cuba-elements/cuba-app#^0.3.0",
-    "cuba-data": "cuba-elements/cuba-data#^0.3.1",
+    "cuba-app": "cuba-elements/cuba-app#^0.3.1",
+    "cuba-data": "cuba-elements/cuba-data#^0.3.2",
     "cuba-form": "cuba-elements/cuba-form#^0.4.1",
     "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0",
     "marked-element": "PolymerElements/marked-element#^2.3.0",
