@@ -11,6 +11,7 @@
 <link rel="import" href="pld-paging.html">
 <link rel="import" href="pld-entity-create.html">
 <link rel="import" href="pld-service-form.html">
+<link rel="import" href="pld-create-order.html">
 
 <dom-module id="pld-shell">
   <template>
@@ -23,6 +24,10 @@
     <prism-highlighter></prism-highlighter>
 
     <cuba-app api-url="//localhost:8080/app/rest/"></cuba-app>
+
+    <pld-sample heading="Create entity with nested property">
+      <pld-create-order></pld-create-order>
+    </pld-sample>
 
     <pld-sample heading="Initialize connection" description-path="initialization"></pld-sample>
 
@@ -49,6 +54,9 @@
     <pld-sample heading="Service form" description-path="pld-service-form">
       <pld-service-form></pld-service-form>
     </pld-sample>
+
+    <pld-create-order></pld-create-order>
+
 
   </template>
   <script>

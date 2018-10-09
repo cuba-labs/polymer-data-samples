@@ -1,0 +1,68 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-toast/paper-toast.html">
+<link rel="import" href="../bower_components/cuba-form/cuba-form.html">
+
+<dom-module id="pld-create-order">
+  <template>
+
+    <cuba-entity-form id="entityForm"
+                      entity-name="pld$Order"
+                      entity="[[order]]"
+                      on-cuba-form-response="_handleFormResponse"
+                      on-cuba-form-error="_handleFormError">
+      <label>
+        Price:
+        <input type="number" name="login" value="{{order.price::input}}">
+      </label>
+      <label>
+        Customer Name:
+        <input type="text" name="name" value="{{order.customer.name::input}}">
+      </label>
+
+      <button on-tap="_submit">Submit</button>
+    </cuba-entity-form>
+
+
+  </template>
+  <script>
+    {
+      class PldCreateOrder extends Polymer.Element {
+        static get is () {
+          return 'pld-create-order';
+        }
+
+        static get properties() {
+          return {
+            order: {
+              type: Object,
+              value: function() {
+                return initializeOrder();
+              }
+            }
+          }
+        }
+
+        _submit() {
+          this.$.entityForm.submit();
+        }
+
+        _handleFormResponse() {
+          alert('Order created');
+        }
+
+        _handleFormError() {
+          alert('Order creation error');
+        }
+
+      }
+
+      function initializeOrder() {
+        return {
+          customer: {}
+        }
+      }
+
+      customElements.define(PldCreateOrder.is, PldCreateOrder);
+    }
+  </script>
+</dom-module>
