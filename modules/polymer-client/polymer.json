@@ -11,5 +11,11 @@
     "service-worker.js",
     "bower_components/webcomponentsjs/*.js",
     "bower_components/fetch/fetch.js"
+  ],
+  "builds": [
+    {
+      "name": "bundled",
+      "preset": "es5-bundled"
+    }
   ]
 }
